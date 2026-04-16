@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "java-hello"
+  labels:
+    app: "java-hello"
+spec:
+  containers:
+  - name: java-hello
+    image: "hefi1413/java-hello:12"

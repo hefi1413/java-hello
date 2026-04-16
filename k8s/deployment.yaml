@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-hello
+  labels:
+    app: java-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-hello
+  template:
+    metadata:
+      labels:
+        app: "java-hello"
+    spec:
+      containers:
+        - name: java-hello
+          image: "hefi1413/java-hello:v1"
+
+          resources:
+            requests:
+              cpu: "0.3"
+              memory: 200Mi
+            limits:
+              cpu: "0.3"
+              memory: 525Mi
+
+          #envFrom: 
+          #  - secretRef:
+          #      name: javaserver-secret
+
+      
