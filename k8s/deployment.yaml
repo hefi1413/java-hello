@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: java-hello
-          image: "hefi1413/java-hello:v1"
+          image: "hefi1413/java-hello:12"
 
           resources:
             requests:
