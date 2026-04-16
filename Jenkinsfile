@@ -4,7 +4,7 @@ pipeline {
     stages { 
         stage ('Inicial') { 
             steps {
-                scripts {
+                script {
                     dockerapp = docker.build( "hefi1413/java-hello", '-f ./Dockerfile .')
                 }
                 echo 'Iniciando a pipeline'
