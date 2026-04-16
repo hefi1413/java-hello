@@ -2,10 +2,21 @@ pipeline {
     agent any
 
     stages { 
-        stage ('Inicial') { 
+        stage ('Build Image') { 
             steps {
                 script {
                     dockerapp = docker.build( "hefi1413/java-hello:${env.BUILD_ID}", '-f ./Dockerfile .')
+                }
+            }
+        }
+
+        stage ('Push Image') { 
+            steps {
+                script {
+                    docker.withRegsitry( 'https://registry.hub.docker.com', 'dockerhub' ) {
+                        dockerapp.push('latest');
+                        dockerapp.push(${env.BUILD_ID});
+                    }
                 }
             }
         }
